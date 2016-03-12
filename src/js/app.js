@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ReactDOM from 'react-dom';
+import SlideOut from 'slideout';
 import {
 	Container,
 	createApp,
@@ -27,14 +28,12 @@ var App = React.createClass({
 			peopleStore: peopleStore
 		};
 	},
-
 	componentDidMount () {
 		// Hide the splash screen when the app is mounted
 		if (navigator.splashscreen) {
 			navigator.splashscreen.hide();
 		}
 	},
-
 	render () {
 		let appWrapperClassName = 'app-wrapper device--' + (window.device || {}).platform
 
@@ -55,13 +54,44 @@ var App = React.createClass({
 // ------------------------------
 
 var MainViewController = React.createClass({
+	componentDidMount() {
+		this.slideout = new SlideOut({
+			'panel': this.refs.panel,
+			'menu': this.refs.menu,
+			'padding': 256,
+			'tolerance': 70
+		});
+	},
+	slideToggle: function(e) {
+		this.slideout.toggle();
+		return;
+	},
 	render () {
 		return (
 			<Container>
-				<UI.NavigationBar name="main" />
-				<ViewManager name="main" defaultView="tabs">
-					<View name="tabs" component={TabViewController} />
-				</ViewManager>
+				<div ref="menu">
+					<UI.Item>
+						<UI.ItemInner>
+							<UI.ItemTitle>SriKanth</UI.ItemTitle>
+						</UI.ItemInner>
+					</UI.Item>
+					<UI.Item>
+						<UI.ItemInner>
+							<UI.ItemTitle>Nikhil</UI.ItemTitle>
+						</UI.ItemInner>
+					</UI.Item>
+
+				</div>
+				<div ref="panel">
+					<UI.Tabs.Navigator>
+						<UI.Tabs.Tab onTap={this.slideToggle}>
+							<span className="Tabs-Icon Tabs-Icon--lists" />
+						</UI.Tabs.Tab>
+					</UI.Tabs.Navigator>
+					<ViewManager name="main" defaultView="tabs">
+						<View name="tabs" component={TabViewController} />
+					</ViewManager>
+				</div>
 			</Container>
 		);
 	}

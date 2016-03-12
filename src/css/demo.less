@@ -1,4 +1,4 @@
-// 
+//
 // Demo
 // ==============================
 
@@ -45,7 +45,7 @@
 @media only screen and (min-width : 480px) {
 
 	// make it pretty!
-	
+
 	#app {
 		#gradient .directional( spin(@demo-bg,-22%), spin(@demo-bg,22%), 135deg );
 		background-color: @demo-bg;
@@ -73,4 +73,41 @@
 		margin: -@silhouette-chrome-vertical -@silhouette-chrome-horizontal;
 		padding: @silhouette-chrome-vertical @silhouette-chrome-horizontal;
 	}
+}
+
+html, body {
+ margin:0px;
+ width: 100%;
+ height: 100%;
+}
+
+.slideout-menu {
+ position: fixed;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ z-index: 0;
+ width: 256px;
+ overflow-y: auto;
+ -webkit-overflow-scrolling: touch;
+ display: none;
+ background-color: white;
+}
+
+.slideout-panel {
+ height: 100vh;
+ background-color:#00BCD4;
+ position:relative;
+ z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+ overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+ display: block;
 }
