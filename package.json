@@ -15,6 +15,7 @@
     "classnames": "^2.2.1",
     "cordova-dialogs": "^1.0.2",
     "httpify": "^3.0.0",
+    "material-design-icons": "^2.2.1",
     "react": "^0.14.3",
     "react-addons-css-transition-group": "^0.14.3",
     "react-container": "^0.3.1",

@@ -96,7 +96,7 @@ var MainViewController = React.createClass({
 // Tab Controller
 // ------------------------------
 
-var lastSelectedTab = 'lists'
+var lastSelectedTab = 'controls'
 var TabViewController = React.createClass({
 	getInitialState () {
 		return {
@@ -152,7 +152,7 @@ var TabViewController = React.createClass({
 				<UI.Tabs.Navigator>
 					<UI.Tabs.Tab onTap={this.props.slideToggle}>
 						<span className="Tabs-Icon Tabs-Icon--lists" />
-						<UI.Tabs.Label>Lists</UI.Tabs.Label>
+						<UI.Tabs.Label>Toggle</UI.Tabs.Label>
 					</UI.Tabs.Tab>
 					<UI.Tabs.Tab onTap={this.selectTab.bind(this, 'lists')} selected={selectedTabSpan === 'lists'}>
 						<span className="Tabs-Icon Tabs-Icon--lists" />
